@@ -26,9 +26,9 @@ namespace okulSistemi
                 sqlCheck.check();
 
                 // Aktif öğrenci, öğretmen ve yardımcı sayıları alınıyor ve ilgili label'lara yazılıyor
-                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tbl_ogrenciler WHERE DURUM=1", sql.con);
-                SqlCommand cmd2 = new SqlCommand("SELECT COUNT(*) FROM tbl_ogretmenler WHERE DURUM=1", sql.con);
-                SqlCommand cmd3 = new SqlCommand("SELECT COUNT(*) FROM tbl_yardimcilar WHERE DURUM=1", sql.con);
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tbl_ogrenciler WHERE DURUM=@durum", sql.con);//Güvenlik için parametre ile yapılabilir. Bu uygulamada belirli yerlerde yaptım.
+                SqlCommand cmd2 = new SqlCommand("SELECT COUNT(*) FROM tbl_ogretmenler WHERE DURUM=@durum", sql.con);//Güvenlik için parametre ile yapılabilir. Bu uygulamada belirli yerlerde yaptım.
+                SqlCommand cmd3 = new SqlCommand("SELECT COUNT(*) FROM tbl_yardimcilar WHERE DURUM=@durum", sql.con);   //Güvenlik için parametre ile yapılabilir. Bu uygulamada belirli yerlerde yaptım.
                 int ogrenciSayisi = (int)cmd.ExecuteScalar();
                 int ogretmenSayisi = (int)cmd2.ExecuteScalar();
                 int yardimciSayisi = (int)cmd3.ExecuteScalar();
